@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   items: [],
+  cancel: false,
   loading: false,
   error: null,
   search: '',
@@ -29,10 +30,10 @@ export default function skillsReducer(state = initialState, action) {
         error,
       };
     case CLEAR_SKILLS:
-      return initialState;
+      return {...initialState, cancel: true};
     case SEARCH_SKILLS_SUCCESS:
       const {items} = action.payload;
-      return {
+      return state.cancel ? initialState : {
         ...state,
         items,
         loading: false,
@@ -42,7 +43,7 @@ export default function skillsReducer(state = initialState, action) {
       const {search} = action.payload;
       return {
         ...state,
-        search
+        search, cancel: false
       };
     
     default:

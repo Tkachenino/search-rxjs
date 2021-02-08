@@ -11,7 +11,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const epic = combineEpics(
   changeSearchEpic,
-  searchSkillsEpic
+  searchSkillsEpic,
+  // clearSkillsEpic
 );
 
 const epicMiddleware = createEpicMiddleware();
